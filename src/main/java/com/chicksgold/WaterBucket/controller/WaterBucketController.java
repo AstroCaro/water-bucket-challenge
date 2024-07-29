@@ -23,7 +23,10 @@ public class WaterBucketController {
     @Operation(summary = "Generate solution for Water Bucket Riddle", tags = { "Water Bucket" })
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Get solution successfully"),
-            @ApiResponse(responseCode = "409", description = "No possible solution")  })
+            @ApiResponse(responseCode = "409", description = "No possible solution"),
+            @ApiResponse(responseCode = "422", description = "No possible to convert this kind of string in a valid ")
+    })
+
     @PostMapping()
     public ResponseEntity<RiddleResponse> getSolutionRiddle(@Valid @RequestBody RiddleRequest riddleRequest){
             RiddleResponse riddleResponse = waterBucketService.getSolution(riddleRequest);
